@@ -3,12 +3,12 @@ package com.clyde.bluetoothterminal
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.clyde.bluetoothterminal.ui.screen.RequestPermissionsScreen
 import com.clyde.bluetoothterminal.ui.theme.BluetoothTerminalTheme
 import com.clyde.bluetoothterminal.util.navigation.LocalNavController
 import com.clyde.bluetoothterminal.util.navigation.Route
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BluetoothTerminalTheme {
+            BluetoothTerminalTheme(darkTheme = false, dynamicColor = true) {
                 CompositionLocalProvider(
                     LocalNavController provides rememberNavController()
                 ) {
@@ -35,7 +35,7 @@ fun AppScreen() {
         startDestination = Route.RequestPermissions.route
     ) {
         composable(Route.RequestPermissions.route) {
-            Text("Request permissions screen")
+            RequestPermissionsScreen()
         }
     }
 }

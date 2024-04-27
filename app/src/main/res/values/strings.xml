@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bluetooth Terminal</string>
+    <string name="app_name" translatable="false">Bluetooth Terminal</string>
+    <string name="required_permissions_lb">Required permissions:</string>
+    <string name="status_granted_lb">Granted</string>
+    <string name="status_denied_lb">Denied</string>
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="required_permissions_lb">Необхідні дозволи:</string>
+    <string name="status_granted_lb">Надано</string>
+    <string name="status_denied_lb">Відхилено</string>
+</resources>
