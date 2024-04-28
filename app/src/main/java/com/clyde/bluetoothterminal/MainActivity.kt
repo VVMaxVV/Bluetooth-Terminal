@@ -9,15 +9,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.clyde.bluetoothterminal.ui.screen.RequestPermissionsScreen
-import com.clyde.bluetoothterminal.ui.theme.BluetoothTerminalTheme
-import com.clyde.bluetoothterminal.util.navigation.LocalNavController
+import com.clyde.bluetoothterminal.ui.theme.AppTheme
 import com.clyde.bluetoothterminal.util.navigation.Route
+import com.clyde.bluetoothterminal.util.ui.provider.LocalNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BluetoothTerminalTheme(darkTheme = false, dynamicColor = true) {
+            AppTheme(darkTheme = true, dynamicColor = true) {
                 CompositionLocalProvider(
                     LocalNavController provides rememberNavController()
                 ) {

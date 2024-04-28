@@ -1,4 +1,4 @@
-package com.clyde.bluetoothterminal.util.ui
+package com.clyde.bluetoothterminal.util.ui.shame
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color

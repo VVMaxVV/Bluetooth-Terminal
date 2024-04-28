@@ -14,11 +14,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
-import com.clyde.bluetoothterminal.util.navigation.LocalNavController
-import com.clyde.bluetoothterminal.util.ui.CustomColorShame
+import com.clyde.bluetoothterminal.util.ui.provider.CustomColorShame
+import com.clyde.bluetoothterminal.util.ui.provider.LocalNavController
 
 @Composable
-fun BluetoothTerminalTheme(
+fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
