@@ -11,6 +11,7 @@ composeBom = "2024.04.01"
 constraintlayoutCore = "1.0.4"
 compose-navigation = "2.7.7"
 material3 = "1.2.1"
+accomponist = "0.34.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,6 +25,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-constraintlayout-core = { group = "androidx.constraintlayout", name = "constraintlayout-core", version.ref = "constraintlayoutCore" }
 androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+google-accompanist = {group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accomponist"}
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -34,7 +36,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 [bundles]
 androidx-compose = ["androidx-activity-compose", "androidx-compose-bom", "androidx-ui",
     "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-constraintlayout-core",
-    "androidx-compose-navigation"]
+    "androidx-compose-navigation", "google-accompanist"]
 androidx-matrial3 = ["androidx-material3"]
 androidx-core = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
 

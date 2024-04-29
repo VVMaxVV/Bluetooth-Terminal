@@ -1,4 +1,4 @@
-package com.clyde.bluetoothterminal.util.navigation
+package com.clyde.bluetoothterminal.util.ui.provider
 
 import androidx.compose.runtime.compositionLocalOf
 import androidx.navigation.NavHostController
