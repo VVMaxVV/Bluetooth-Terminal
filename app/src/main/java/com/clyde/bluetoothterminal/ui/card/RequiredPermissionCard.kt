@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalPermissionsApi::class)
 
-package com.clyde.bluetoothterminal.util.ui.component.card
+package com.clyde.bluetoothterminal.ui.card
 
 import android.content.Intent
 import android.net.Uri
@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,8 +29,11 @@ import androidx.core.content.ContextCompat.startActivity
 import com.clyde.bluetoothterminal.R
 import com.clyde.bluetoothterminal.ui.theme.AppTheme
 import com.clyde.bluetoothterminal.util.extencion.customColorsScheme
+import com.clyde.bluetoothterminal.util.extencion.defaultCardColors
+import com.clyde.bluetoothterminal.util.extencion.mainButtonColors
+import com.clyde.bluetoothterminal.util.permission.rememberMultiplePermissionsStateSave
 import com.clyde.bluetoothterminal.util.ui.component.ButtonLabel
-import com.clyde.bluetoothterminal.util.ui.rememberMultiplePermissionsStateSave
+import com.clyde.bluetoothterminal.util.ui.context
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 
@@ -42,15 +44,18 @@ fun RequiredPermissionCard(
     permissionsState: MultiplePermissionsState,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-    Card(modifier = modifier) {
+    val context = context
+    Card(
+        modifier = modifier,
+        colors = MaterialTheme.defaultCardColors
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp)
                 .padding(
                     vertical = dimensionResource(R.dimen.padding_1),
-                    horizontal = dimensionResource(R.dimen.padding_3)
+                    horizontal = dimensionResource(R.dimen.padding_2)
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
@@ -73,22 +78,22 @@ fun RequiredPermissionCard(
             } else {
                 Button(
                     onClick = {
-                        when (permissionsState.shouldShowRationale) {
-                            true -> permissionsState.launchMultiplePermissionRequest()
-                            else -> {
-                                val intent =
-                                    Intent(ACTION_APPLICATION_DETAILS_SETTINGS)
-                                val uri = Uri.fromParts("package", context.packageName, null)
-                                intent.setData(uri)
-                                startActivity(context, intent, null)
-                            }
+                        if (permissionsState.shouldShowRationale)
+                            permissionsState.launchMultiplePermissionRequest()
+                        else {
+                            val intent =
+                                Intent(ACTION_APPLICATION_DETAILS_SETTINGS)
+                            val uri = Uri.fromParts("package", context.packageName, null)
+                            intent.setData(uri)
+                            startActivity(context, intent, null)
                         }
                         permissionsState.launchMultiplePermissionRequest()
                     },
-                    Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    colors = MaterialTheme.mainButtonColors
                 ) {
                     ButtonLabel(
-                        text = stringResource(R.string.grunt_lb),
+                        text = stringResource(R.string.grant_lb),
                         maxLines = 1
                     )
                 }
@@ -100,7 +105,7 @@ fun RequiredPermissionCard(
 @Preview(showBackground = false, backgroundColor = 0xFFFFFFFF)
 @Composable
 private fun ShowRequiredPermissionCard() {
-    AppTheme {
+    AppTheme(darkTheme = true, dynamicColor = false) {
         RequiredPermissionCard(
             name = "Bluetooth",
             permissionsState = rememberMultiplePermissionsStateSave(listOf())

@@ -1,4 +1,4 @@
-package com.clyde.bluetoothterminal.util.ui
+package com.clyde.bluetoothterminal.util.permission
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf

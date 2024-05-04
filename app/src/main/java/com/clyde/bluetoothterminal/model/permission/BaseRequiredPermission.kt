@@ -1,4 +1,4 @@
-package com.clyde.bluetoothterminal.model
+package com.clyde.bluetoothterminal.model.permission
 
 import androidx.compose.runtime.Composable
 import com.google.accompanist.permissions.ExperimentalPermissionsApi

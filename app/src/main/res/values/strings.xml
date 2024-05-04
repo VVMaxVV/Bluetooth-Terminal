@@ -3,5 +3,7 @@
     <string name="app_name" translatable="false">Bluetooth Terminal</string>
     <string name="required_permissions_lb">Required permissions:</string>
     <string name="continue_lb">Continue</string>
-    <string name="grunt_lb">Grunt</string>
+    <string name="grant_lb">Grant</string>
+    <string name="select_device_lb">Select device</string>
+    <string name="requre_premission_toast">Basic permissions must be granted</string>
 </resources>
