@@ -14,8 +14,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
+import com.clyde.bluetoothterminal.util.ui.provider.AppTheme
 import com.clyde.bluetoothterminal.util.ui.provider.CustomColorShame
 import com.clyde.bluetoothterminal.util.ui.provider.LocalNavController
+import com.clyde.bluetoothterminal.util.ui.provider.LocalTheme
 
 @Composable
 fun AppTheme(
@@ -48,7 +50,8 @@ fun AppTheme(
 
     CompositionLocalProvider(
         LocalNavController provides rememberNavController(),
-        CustomColorShame provides customColorsPalette
+        CustomColorShame provides customColorsPalette,
+        LocalTheme provides AppTheme()
     ) {
         MaterialTheme(
             colorScheme = colorScheme,

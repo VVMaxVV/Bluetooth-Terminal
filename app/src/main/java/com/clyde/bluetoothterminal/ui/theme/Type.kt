@@ -1,6 +1,5 @@
 package com.clyde.bluetoothterminal.ui.theme
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
@@ -17,23 +16,20 @@ val typography: Typography
             fontWeight = FontWeight.Medium,
             fontSize = 20.sp,
             lineHeight = 24.sp,
-            letterSpacing = 1.sp,
-            color = MaterialTheme.colorScheme.onSurface
+            letterSpacing = 1.sp
         ),
         headlineSmall = TextStyle(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
             lineHeight = 16.sp,
-            letterSpacing = .8.sp,
-            color = MaterialTheme.colorScheme.onPrimary
+            letterSpacing = .8.sp
         ),
         bodyLarge = TextStyle(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp,
             lineHeight = 24.sp,
-            letterSpacing = 0.5.sp,
-            color = MaterialTheme.colorScheme.onSurface
+            letterSpacing = 0.5.sp
         )
     )

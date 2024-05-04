@@ -1,6 +1,6 @@
 package com.clyde.bluetoothterminal.ui.screen
 
-import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,25 +12,33 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.clyde.bluetoothterminal.R
-import com.clyde.bluetoothterminal.model.BaseRequiredPermission
-import com.clyde.bluetoothterminal.model.RequestBluetoothPermission
+import com.clyde.bluetoothterminal.model.permission.BaseRequiredPermission
+import com.clyde.bluetoothterminal.model.permission.RequestBluetoothPermission
+import com.clyde.bluetoothterminal.ui.card.RequiredPermissionCard
 import com.clyde.bluetoothterminal.ui.theme.AppTheme
 import com.clyde.bluetoothterminal.util.defaultValue.DefaultModifiers
+import com.clyde.bluetoothterminal.util.extencion.mainButtonColors
+import com.clyde.bluetoothterminal.util.extencion.showToast
 import com.clyde.bluetoothterminal.util.ui.component.ButtonLabel
 import com.clyde.bluetoothterminal.util.ui.component.Header
-import com.clyde.bluetoothterminal.util.ui.component.card.RequiredPermissionCard
+import com.clyde.bluetoothterminal.util.ui.context
+import com.clyde.bluetoothterminal.util.ui.provider.LocalNavController
+import com.clyde.bluetoothterminal.util.ui.string
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun RequestPermissionsScreen() {
-    val context = LocalContext.current
-    val listPermissions = listPermissions
+    val context = context
+    val navController = LocalNavController.current
+    val requiredPermissionToastMessage = string(R.string.requre_premission_toast)
+    BackHandler {
+        context.showToast(requiredPermissionToastMessage)
+    }
     Column(modifier = DefaultModifiers.screen, horizontalAlignment = Alignment.CenterHorizontally) {
         Header(
             text = stringResource(R.string.required_permissions_lb),
@@ -52,7 +60,7 @@ fun RequestPermissionsScreen() {
         Button(
             enabled = listPermissions.all { it.permissionState.allPermissionsGranted },
             onClick = {
-                Toast.makeText(context, "Navigate to next screen", Toast.LENGTH_SHORT).show()
+                navController.popBackStack()
             },
             modifier = Modifier
                 .padding(
@@ -60,6 +68,7 @@ fun RequestPermissionsScreen() {
                     vertical = dimensionResource(R.dimen.padding_3)
                 )
                 .align(Alignment.End),
+            colors = MaterialTheme.mainButtonColors
         ) {
             ButtonLabel(
                 text = stringResource(R.string.continue_lb),
@@ -79,7 +88,7 @@ private val listPermissions: List<BaseRequiredPermission> = listOf(
 @Preview
 @Composable
 private fun PreviewRequestPermissionsScreen() {
-    AppTheme {
+    AppTheme(darkTheme = true, dynamicColor = false) {
         RequestPermissionsScreen()
     }
 }

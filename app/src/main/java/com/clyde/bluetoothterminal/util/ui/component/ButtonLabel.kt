@@ -1,7 +1,6 @@
 package com.clyde.bluetoothterminal.util.ui.component
 
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +19,6 @@ fun ButtonLabel(
     Text(
         text = text,
         modifier = modifier,
-        color = MaterialTheme.colorScheme.onPrimary,
         maxLines = maxLines,
         style = style,
         textAlign = TextAlign.Center
@@ -30,7 +28,7 @@ fun ButtonLabel(
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
 private fun ShowButtonLabel() {
-    AppTheme {
+    AppTheme(darkTheme = true, dynamicColor = false) {
         Button(onClick = { }) {
             ButtonLabel("Hello world!")
         }

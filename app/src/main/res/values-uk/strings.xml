@@ -2,5 +2,7 @@
 <resources>
     <string name="required_permissions_lb">Необхідні дозволи:</string>
     <string name="continue_lb">Продовжити</string>
-    <string name="grunt_lb">Надати</string>
+    <string name="grant_lb">Надати</string>
+    <string name="select_device_lb">Обрати притсрій</string>
+    <string name="requre_premission_toast">Необхідно надати основні дозволи</string>
 </resources>
